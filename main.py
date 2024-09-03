@@ -79,19 +79,10 @@ def run():
         # embed.set_thumbnail(url="") later change with weather api url
         embed.add_field(name="Temperature", value = f"{temp} {degree_symbol}C")
         embed.add_field(name="Feels like", value = f"{feels_like} {degree_symbol}C")
-        embed.add_field(name="Hight/Low", value = f"{high}/{low} {degree_symbol}C")
+        embed.add_field(name="High/Low", value = f"{high}/{low} {degree_symbol}C")
         embed.add_field(name="Localtime", value = f'{local_time}') 
         embed.add_field(name="Chance of rain", value = f'{chance_rain}')
         await interaction.response.send_message(embed=embed)
-    
-    #name of the location (user input), local time, high/low temp, feels like, chance of rain, condition
-    #parsing the json file -> format it -> add chance of rain -> add weather image -> hosting
-    
-    #  await interaction.response.send_message(f"The weather of the {name} is NotImplementedError, {interaction.user.mention}", ephemeral=True)    
-    # @say.error
-    # async def say_error(ctx, error):
-    #     if isinstance(error, commands.MissingRequiredArgument):
-    #         await ctx.send("handled error locally")
     
 
     bot.run(settings.DISCORD_API_SECRET)
