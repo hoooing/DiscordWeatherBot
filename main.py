@@ -22,7 +22,8 @@ def get_weather_info(city: str):
         condition_text = data['current']['condition']['text']
         feels_like = data['current']['feelslike_c']
         local_time = data['location']['localtime']
-        return location_name, temperature_c, condition_text, feels_like, local_time
+        icon = data['current']['condition']['icon']
+        return location_name, temperature_c, condition_text, feels_like, local_time, icon
     else:
         print(f"Failed to get data. Status code: {res.status_code}")
         return None        
@@ -63,10 +64,10 @@ def run():
             await ctx.send("Missing required Argument")
     
     @bot.tree.command()
-    @app_commands.describe(name ="display the weather of the Location ex)/weather [city]")
+    @app_commands.describe(name ="display the weather of the nearest city ex)/weather [city]")
     @app_commands.rename(name="location")
     async def weather(interaction: discord.Interaction, name : str):
-        location, temp, cond, feels_like, local_time = get_weather_info(name)
+        location, temp, cond, feels_like, local_time, icon = get_weather_info(name)
         high, low, chance_rain = get_forecast_info(name)
         embed = discord.Embed(
             colour=discord.Colour.dark_blue(),
@@ -76,7 +77,8 @@ def run():
         degree_symbol = '\u00B0'
         embed.set_footer(text=f"Today at {ts_am_pm}")
         embed.set_author(name=f"Weather in {location}") #later add google maps location
-        # embed.set_thumbnail(url="") later change with weather api url
+        print(f'{icon}')
+        embed.set_thumbnail(url = f'https:{icon}') 
         embed.add_field(name="Temperature", value = f"{temp} {degree_symbol}C")
         embed.add_field(name="Feels like", value = f"{feels_like} {degree_symbol}C")
         embed.add_field(name="High/Low", value = f"{high}/{low} {degree_symbol}C")
