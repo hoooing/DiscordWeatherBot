@@ -11,4 +11,4 @@ Python based weather bot using Discord.py. This Bot can give current weather for
 ![image](https://github.com/user-attachments/assets/3862c50d-74cb-4718-8e9c-b4a0dcd8eff4)
 
 - Third, press the enter <br />
-![image](https://github.com/user-attachments/assets/052378d8-d626-4c05-8662-7e22d6dfea9e)
+![image](https://github.com/user-attachments/assets/77840941-bbe0-4710-a97d-62aeecac4343)
