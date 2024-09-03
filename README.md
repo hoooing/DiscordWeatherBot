@@ -1,4 +1,14 @@
 # weather-bot
 python weather bot using Discord.py. Bot can give current weather for a given location and some other useful informations.
 
-![image](https://github.com/user-attachments/assets/722b3e79-175d-4104-89e8-4cf1ffdcc188)
+
+
+# STEP
+- First, type slash(/) weather in the chat
+![image](https://github.com/user-attachments/assets/b7165b8c-4371-4f4a-9f5d-d809e679006f)
+
+- Second, type the city
+![image](https://github.com/user-attachments/assets/3862c50d-74cb-4718-8e9c-b4a0dcd8eff4)
+
+- Third, press the enter
+![image](https://github.com/user-attachments/assets/052378d8-d626-4c05-8662-7e22d6dfea9e)
