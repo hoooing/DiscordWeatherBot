@@ -62,19 +62,6 @@ def run():
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Missing required Argument")
     
-    # @bot.hybrid_command(
-    #     help="/weather [city]",
-    #     description ="Type the weather command as below",
-    #     brief= "How to use the /weather command"
-    # )
-    # async def weather1(ctx):
-    #     """ The weather of the location"""
-    #     await ctx.send("NotImplementedError")
-        
-    # @bot.command()
-    # async def say(ctx, what):
-    #     await ctx.send(what)
-    
     @bot.tree.command()
     @app_commands.describe(name ="display the weather of the Location ex)/weather [city]")
     @app_commands.rename(name="location")
