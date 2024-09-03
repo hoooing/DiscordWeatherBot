@@ -3,7 +3,7 @@ Python based weather bot using Discord.py. This Bot can give current weather for
 
 
 
-# STEPS
+# HOW TO USE
 - First, type slash(/) weather in the chat
 ![image](https://github.com/user-attachments/assets/b7165b8c-4371-4f4a-9f5d-d809e679006f)
 
