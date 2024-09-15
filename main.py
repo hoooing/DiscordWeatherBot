@@ -5,6 +5,7 @@ from discord import app_commands
 from datetime import datetime
 import requests
 import json
+import webserver
 
 logger = settings.logging.getLogger("bot")
 dt_obj = datetime.now()
@@ -14,7 +15,6 @@ def get_weather_info(city: str):
     # url = "http://api.weatherapi.com/v1/current.json"
     complete_url = f"http://api.weatherapi.com/v1/current.json?key={settings.WEATHER_API_KEY}&q={city}"
     res = requests.get(complete_url)
-    print(res.status_code)
     if res.status_code == 200:
         data = res.json()
         location_name = data['location']['name']
@@ -33,7 +33,6 @@ def get_forecast_info(city: str):
     url = "http://api.weatherapi.com/v1/current.json"
     complete_url = f'http://api.weatherapi.com/v1/forecast.json?key={settings.WEATHER_API_KEY}&q={city}&days=1&aqi=no&alerts=no'
     res = requests.get(complete_url)
-    print(f'{res.status_code} forecast')
     if res.status_code == 200:
         data = res.json()
         high = data['forecast']['forecastday'][0]['day']['maxtemp_c']
@@ -76,8 +75,7 @@ def run():
         )
         degree_symbol = '\u00B0'
         embed.set_footer(text=f"Today at {ts_am_pm}")
-        embed.set_author(name=f"Weather in {location}") #later add google maps location
-        print(f'{icon}')
+        embed.set_author(name=f"Weather in {location}") #later add google maps location url
         embed.set_thumbnail(url = f'https:{icon}') 
         embed.add_field(name="Temperature", value = f"{temp} {degree_symbol}C")
         embed.add_field(name="Feels like", value = f"{feels_like} {degree_symbol}C")
@@ -89,6 +87,7 @@ def run():
 
     bot.run(settings.DISCORD_API_SECRET)
 if __name__ == "__main__":
+    webserver.keep_alive()
     run()
-    get_forecast_info('paris')
+    
     
